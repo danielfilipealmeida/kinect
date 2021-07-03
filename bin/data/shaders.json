@@ -1,0 +1,14 @@
+{
+    "edgedetection": {},
+    "grayscape": {},
+    "limiter": {},
+    "noise": {},
+    "threshold": {},
+    "invertcolor": {
+        "parameters": {
+            "color": {
+                "type": "rgb"
+            }
+        }
+    }
+}
