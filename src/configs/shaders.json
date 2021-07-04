@@ -10,5 +10,21 @@
                 "type": "rgb"
             }
         }
+    },
+    "limiter": {
+        "parameters": {
+            "lowerLimit": {
+                "type": "float",
+                "min": 0.0,
+                "max": 1.0,
+                "value": 0.0
+            },
+            "upperLimit": {
+                "type": "float",
+                "min": 0.0,
+                "max": 1.0,
+                "value": 1.0
+            }
+        }
     }
 }

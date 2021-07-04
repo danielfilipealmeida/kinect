@@ -12,7 +12,7 @@ void ofApp::initKinect()
 }
 
 void ofApp::initUI(){
-    gui.setup(appShaders.group);
+    gui.setup(appShaders.getParameterForShader("limiter"));
 }
 
 //--------------------------------------------------------------
@@ -21,7 +21,7 @@ void ofApp::setup(){
     ofSetFrameRate(60);
     
     appShaders.loadConfig(ofLoadJson("shaders.json"));
-    shaderBatch.setup(appShaders, {"invertcolor"}, ofRectangle(0, 0, 320, 200));
+    shaderBatch.setup(appShaders, {"limiter"}, ofRectangle(0, 0, 320, 200));
     
     //initKinect();
     testImage.load("Daniel.jpg");
@@ -34,6 +34,8 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     ofBackground(100, 100, 100);
+    
+    shaderBatch.update();
     
     /*
     kinect.update();

@@ -13,6 +13,8 @@
 #include <string>
 
 
+
+
 /**
  Facade for all shaders used in the app
  */
@@ -20,29 +22,33 @@ class AppShaders {
     std::map<std::string, ofShader*> shaders;
     ofJson config;
     
+    std::map<std::string, ofParameterGroup> parameterGroups;
     
 public:
-    
-    ofParameterGroup group;
-    
+   
     AppShaders() {}
     
     void loadConfig(ofJson _config) {
         config = _config;
-        for(auto& [key, value] : config.items()) {
-            loadShader(key);
+        for(auto& [shaderName, value] : config.items()) {
+            loadShader(shaderName);
             
             for(auto& [key, value]  : value.items()) {
                 if (key == "parameters")  {
-                    handleParameters(value);
+                    handleParameters(shaderName, value);
                 }
             }
-            
-            
         }
+        
+        shaders["limiter"]->begin();
+        shaders["limiter"]->setUniform1f("lowerLimit", 100);
+        shaders["limiter"]->end();
     }
     
-    void handleParameters(ofJson parameters) {
+    void handleParameters(std::string shaderName, ofJson parameters) {
+        ofParameterGroup group = ofParameterGroup(shaderName);
+        
+        
         for(auto& [parameter, options]  : parameters.items()) {
             if (options["type"] == "rgb") {
                 ofParameter<ofColor> param;
@@ -50,7 +56,29 @@ public:
                 
                 group.add(param);
             }
+            
+            if (options["type"] == "float") {
+                ofParameter<float> param;
+                param.setName(parameter);
+                param.setMax(options["max"]);
+                param.setMin(options["min"]);
+                
+                float value = options["min"];
+                if (options.contains("value")) {
+                     value = options["value"];
+                }
+                param = value;
+                
+                
+                group.add(param);
+            }
         }
+        
+        parameterGroups[shaderName] = group;
+    }
+    
+    ofParameterGroup getParameterForShader(std::string shaderName) {
+        return parameterGroups[shaderName];
     }
     
     /*!
@@ -85,6 +113,16 @@ public:
         }
         
         shader->begin();
+        ofParameterGroup parameterGroup = parameterGroups[shaderName];
+        for(auto parameter:parameterGroup) {
+            std::string name = parameter->getName();
+            std::string type = parameter->valueType();
+            
+            if (type == "f") {
+                ofParameter<float> parameter = (ofParameter<float> &) parameterGroup[name];
+                shader->setUniform1f(name, parameter);
+            }
+        }
         texture.draw(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
         shader->end();
     }
