@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<group>
+	<limiter>
+		<lowerLimit>0.255102</lowerLimit>
+		<upperLimit>0.581633</upperLimit>
+	</limiter>
+</group>

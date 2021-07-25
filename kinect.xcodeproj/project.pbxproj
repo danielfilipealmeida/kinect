@@ -28,6 +28,7 @@
 		65765A4C265FA9FC00B6F24A /* noise.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65765A45265FA9F600B6F24A /* noise.frag */; };
 		65765A4D265FA9FC00B6F24A /* template.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65765A42265FA9F600B6F24A /* template.frag */; };
 		65765A4E265FA9FC00B6F24A /* threshold.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65765A46265FA9F600B6F24A /* threshold.frag */; };
+		65878A3526AE17180019E7D1 /* set1.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65878A3426AE16500019E7D1 /* set1.json */; };
 		65B53AB62641EDEE0029BBB6 /* usb-1.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 65B53A8A2641EB790029BBB6 /* usb-1.0.0.a */; };
 		65B71E952642963300A70E97 /* ofxKinectExtras.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65B53AB42641EB790029BBB6 /* ofxKinectExtras.cpp */; };
 		65B71E962642967900A70E97 /* loader.c in Sources */ = {isa = PBXBuildFile; fileRef = 65B53A9C2641EB790029BBB6 /* loader.c */; };
@@ -49,6 +50,7 @@
 			dstPath = data;
 			dstSubfolderSpec = 16;
 			files = (
+				65878A3526AE17180019E7D1 /* set1.json in CopyFiles */,
 				65765A48265FA9FC00B6F24A /* basic.vert in CopyFiles */,
 				65765A49265FA9FC00B6F24A /* edgedetection.frag in CopyFiles */,
 				65765A4A265FA9FC00B6F24A /* grayscale.frag in CopyFiles */,
@@ -100,6 +102,7 @@
 		65765A47265FA9F600B6F24A /* edgedetection.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = edgedetection.frag; sourceTree = "<group>"; };
 		65765A4F265FB89600B6F24A /* AppShaders.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AppShaders.hpp; sourceTree = "<group>"; };
 		65765A5026640B1A00B6F24A /* ShaderBatch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ShaderBatch.hpp; sourceTree = "<group>"; };
+		65878A3426AE16500019E7D1 /* set1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = set1.json; sourceTree = "<group>"; };
 		65B53A872641EB790029BBB6 /* libusb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libusb.h; sourceTree = "<group>"; };
 		65B53A8A2641EB790029BBB6 /* usb-1.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "usb-1.0.0.a"; sourceTree = "<group>"; };
 		65B53A8C2641EB790029BBB6 /* APACHE20 */ = {isa = PBXFileReference; lastKnownFileType = text; path = APACHE20; sourceTree = "<group>"; };
@@ -381,6 +384,14 @@
 				6554E0932690CA390035DC15 /* ofxPanel.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		65878A3326AE162D0019E7D1 /* sets */ = {
+			isa = PBXGroup;
+			children = (
+				65878A3426AE16500019E7D1 /* set1.json */,
+			);
+			path = sets;
 			sourceTree = "<group>";
 		};
 		65B53A832641EB790029BBB6 /* ofxKinect */ = {
@@ -866,6 +877,7 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				65878A3326AE162D0019E7D1 /* sets */,
 				650D375B266BC991007CC897 /* configs */,
 				650E34D22647187800529D39 /* images */,
 				65B71E972644963600A70E97 /* shaders */,

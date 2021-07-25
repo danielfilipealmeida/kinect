@@ -20,13 +20,31 @@ void ofApp::setup(){
     ofSetLogLevel(OF_LOG_VERBOSE);
     ofSetFrameRate(60);
     
-    appShaders.loadConfig(ofLoadJson("shaders.json"));
-    shaderBatch.setup(appShaders, {"limiter"}, ofRectangle(0, 0, 320, 200));
-    
-    //initKinect();
-    testImage.load("Daniel.jpg");
-    
-    fbo.allocate(320, 200);
+    try {
+        // load shaders
+        ofJson shaderData = ofLoadJson("shaders.json");
+        if (shaderData.empty()) throw new std::runtime_error("Error loading Shaders information.");
+        appShaders.loadConfig(shaderData);
+        
+        // load set data
+        ofJson setData = ofLoadJson("set1.json");
+        for(auto& [key, value]  : setData.items()) {
+            if (key == "filters")  {
+                shaderBatch.setup(appShaders, value, ofRectangle(0, 0, 320, 200));
+            }
+        }
+        // apply data
+        
+        
+        
+        //initKinect();
+        testImage.load("Daniel.jpg");
+        
+        fbo.allocate(320, 200);
+    }
+    catch (std::runtime_error error) {
+        errors.push_front(error.what());
+    }
     
     initUI();
 }
@@ -65,9 +83,19 @@ void ofApp::draw(){
     }
     catch(std::runtime_error error) {
         cout << error.what() << endl;
+        errors.push_front(error.what());
     }
     
     gui.draw();
+    
+    // print errors
+    if (errors.empty()) return;
+    
+    unsigned int count = 0;
+    for (std::string error:errors) {
+        ofDrawBitmapString(error, 0, count * 10);
+        count++;
+    }
 }
 
 //--------------------------------------------------------------
@@ -124,3 +152,5 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
+
+

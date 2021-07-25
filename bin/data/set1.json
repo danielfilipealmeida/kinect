@@ -1,0 +1,6 @@
+{
+    "filters": [
+        "invertcolor",
+        "limiter"
+    ]
+}

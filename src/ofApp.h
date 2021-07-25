@@ -7,6 +7,8 @@
 #include "AppGUI.h"
 
 class ofApp : public ofBaseApp{
+    std::list<std::string> errors;
+    
 	public:
 		void setup();
 		void update();
