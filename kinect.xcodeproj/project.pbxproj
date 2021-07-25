@@ -133,6 +133,7 @@
 		65B53AB12641EB790029BBB6 /* ofxKinect.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxKinect.cpp; sourceTree = "<group>"; };
 		65B53AB32641EB790029BBB6 /* ofxKinectExtras.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxKinectExtras.h; sourceTree = "<group>"; };
 		65B53AB42641EB790029BBB6 /* ofxKinectExtras.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxKinectExtras.cpp; sourceTree = "<group>"; };
+		65ED8BB826ADCC4A00501FA1 /* AppGUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppGUI.h; sourceTree = "<group>"; };
 		E42962AC2163EDD300A6A9E2 /* ofCamera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ofCamera.cpp; path = ../../../libs/openFrameworks/3d/ofCamera.cpp; sourceTree = SOURCE_ROOT; };
 		E42962AD2163EDD300A6A9E2 /* ofMesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ofMesh.h; path = ../../../libs/openFrameworks/3d/ofMesh.h; sourceTree = SOURCE_ROOT; };
 		E42962AE2163EDD300A6A9E2 /* ofNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ofNode.h; path = ../../../libs/openFrameworks/3d/ofNode.h; sourceTree = SOURCE_ROOT; };
@@ -873,6 +874,7 @@
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				65765A4F265FB89600B6F24A /* AppShaders.hpp */,
 				65765A5026640B1A00B6F24A /* ShaderBatch.hpp */,
+				65ED8BB826ADCC4A00501FA1 /* AppGUI.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

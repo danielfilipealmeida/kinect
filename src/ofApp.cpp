@@ -12,7 +12,7 @@ void ofApp::initKinect()
 }
 
 void ofApp::initUI(){
-    gui.setup(appShaders.getParameterForShader("limiter"));
+    gui.init(&appShaders, &shaderBatch);
 }
 
 //--------------------------------------------------------------

@@ -1,10 +1,10 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxGui.h"
 #include "ofxKinect.h"
 #include "AppShaders.hpp"
 #include "ShaderBatch.hpp"
+#include "AppGUI.h"
 
 class ofApp : public ofBaseApp{
 	public:
@@ -41,5 +41,5 @@ class ofApp : public ofBaseApp{
     AppShaders appShaders;
     ShaderBatch shaderBatch;
     
-    ofxPanel gui;
+    AppGUI gui;
 };

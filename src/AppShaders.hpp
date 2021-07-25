@@ -19,15 +19,17 @@
  Facade for all shaders used in the app
  */
 class AppShaders {
-    std::map<std::string, ofShader*> shaders;
     ofJson config;
-    
     std::map<std::string, ofParameterGroup> parameterGroups;
     
 public:
-   
+    
+    std::map<std::string, ofShader*> shaders;
+    
     AppShaders() {}
     
+    /*!
+     */
     void loadConfig(ofJson _config) {
         config = _config;
         for(auto& [shaderName, value] : config.items()) {
@@ -45,9 +47,10 @@ public:
         shaders["limiter"]->end();
     }
     
+    /*!
+     */
     void handleParameters(std::string shaderName, ofJson parameters) {
         ofParameterGroup group = ofParameterGroup(shaderName);
-        
         
         for(auto& [parameter, options]  : parameters.items()) {
             if (options["type"] == "rgb") {
@@ -68,7 +71,6 @@ public:
                      value = options["value"];
                 }
                 param = value;
-                
                 
                 group.add(param);
             }
@@ -97,6 +99,8 @@ public:
         return false;
     }
     
+    /*!
+     */
     void loadShader(std::string shaderName) {
         if (hasShader(shaderName)) return;
         
@@ -105,6 +109,8 @@ public:
         shaders[shaderName] = newShader;
     }
     
+    /*!
+     */
     void apply(std::string shaderName, ofTexture texture, ofRectangle rect) {
         ofShader *shader = shaders[shaderName];
         
@@ -126,6 +132,16 @@ public:
         texture.draw(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
         shader->end();
     }
+    
+    /*!
+     Applies the lambda to each shader 
+     */
+    void each(std::function<void(std::string, ofShader*)> lambda) {
+        for(auto& [shaderName, shader] : shaders) {
+            lambda(shaderName, shader);
+        }
+    }
+    
     
 };
 

@@ -12,10 +12,10 @@
 
 
 class ShaderBatch {
-    std::vector<std::string> shaders;
     AppShaders appShaders;
     
 public:
+    std::vector<std::string> shaders;
     ofFbo output;
     ofRectangle rect;
     ofTexture tmpTex;
@@ -54,6 +54,15 @@ public:
     
     void update() {
        
+    }
+    
+    /*!
+     Applies the lambda to each shader in the batch
+     */
+    void each(std::function<void(std::string, ofShader*)> lambda) {
+        for (std::string shaderName:shaders) {
+            lambda(shaderName, appShaders.shaders[shaderName]);
+        }
     }
 };
 
