@@ -1,5 +1,5 @@
 #include "ofApp.h"
-
+#include "Video.hpp"
 
 
 void ofApp::initKinect()
@@ -26,13 +26,23 @@ void ofApp::setup(){
         if (shaderData.empty()) throw new std::runtime_error("Error loading Shaders information.");
         appShaders.loadConfig(shaderData);
         
-        // load set data
-        ofJson setData = ofLoadJson("set1.json");
-        for(auto& [key, value]  : setData.items()) {
-            if (key == "filters")  {
-                shaderBatch.setup(appShaders, value, ofRectangle(0, 0, 320, 200));
+      
+        setLoader.inputsLambda = [&](ofJson data) {
+            for(auto& [index, input]  : data.items()) {
+                if  (input["type"] == "video") {
+                    Video *video = new Video(input);
+                    inputs.push_back((InputProtocol *) video);
+                    continue;
+                }
+                        
+
+                throw new std::runtime_error("Invalid input type");
             }
-        }
+        };
+        setLoader.filtersLambda = [&](ofJson data) {
+            shaderBatch.setup(appShaders, data, ofRectangle(0, 0, 320, 200));
+        };
+        setLoader.loadFile("set1.json");
         // apply data
         
         

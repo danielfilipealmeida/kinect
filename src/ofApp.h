@@ -5,9 +5,15 @@
 #include "AppShaders.hpp"
 #include "ShaderBatch.hpp"
 #include "AppGUI.h"
+#include "SetLoader.hpp"
+#include "InputProtocol.hpp"
 
 class ofApp : public ofBaseApp{
     std::list<std::string> errors;
+    
+    std::list<InputProtocol *> inputs;
+    
+    SetLoader setLoader;
     
 	public:
 		void setup();
