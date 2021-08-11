@@ -17,6 +17,7 @@ void ofApp::initUI(){
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    ofSetVerticalSync(true);
     ofSetLogLevel(OF_LOG_VERBOSE);
     ofSetFrameRate(60);
     
@@ -35,7 +36,6 @@ void ofApp::setup(){
                     continue;
                 }
                         
-
                 throw new std::runtime_error("Invalid input type");
             }
         };
@@ -43,6 +43,10 @@ void ofApp::setup(){
             shaderBatch.setup(appShaders, data, ofRectangle(0, 0, 320, 200));
         };
         setLoader.loadFile("set1.json");
+        
+        activeInput = inputs[0];
+        activeInput->update();
+        activeInput->play();
         // apply data
         
         
@@ -62,8 +66,11 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     ofBackground(100, 100, 100);
+    activeInput->update();
     
     shaderBatch.update();
+    
+    
     
     /*
     kinect.update();
@@ -86,9 +93,9 @@ void ofApp::draw(){
         
         ofSetColor(255, 255, 255);
         
-        ofTexture tex = texFromPixels(testImage.getPixels());
+        //ofTexture tex = texFromPixels(testImage.getPixels());
 
-        shaderBatch.apply(tex);
+        shaderBatch.apply(activeInput->getTexture());
         shaderBatch.output.draw(0, 0, ofGetWidth(), ofGetHeight());
     }
     catch(std::runtime_error error) {

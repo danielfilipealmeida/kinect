@@ -20,13 +20,33 @@ public:
         this->data = data;
     };
     
-    
-    void render(){
+    virtual void update() {
         if (!video.isLoaded()) {
             video.load(data["path"]);
+            video.setLoopState(OF_LOOP_NORMAL);
         };
-        
+        video.update();
+    }
+    
+    void draw(float x, float y, float w, float h){
+        video.draw(x, y, w, h);
     };
+    
+    ofPixels & getPixels() {
+        return video.getPixels();
+    }
+    
+    ofTexture & getTexture() {
+        return video.getTexture();
+    }
+    
+    void play() {
+        video.play();
+    }
+    
+    void stop() {
+        video.stop();
+    }
     
 };
 

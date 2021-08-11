@@ -13,8 +13,12 @@
 
 class InputProtocol {
 public:
-    
-    virtual void render() = 0;
+    virtual void update() = 0;
+    virtual void draw(float x, float y, float w, float h) = 0;
+    virtual ofPixels & getPixels() = 0;
+    virtual ofTexture & getTexture() = 0;
+    virtual void play() = 0;
+    virtual void stop() = 0;
 };
 
 

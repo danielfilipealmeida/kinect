@@ -11,7 +11,10 @@
 class ofApp : public ofBaseApp{
     std::list<std::string> errors;
     
-    std::list<InputProtocol *> inputs;
+    std::vector<InputProtocol *> inputs;
+    
+    // todo, move this to a layer
+    InputProtocol *activeInput;
     
     SetLoader setLoader;
     
