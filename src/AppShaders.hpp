@@ -128,6 +128,11 @@ public:
                 ofParameter<float> parameter = (ofParameter<float> &) parameterGroup[name];
                 shader->setUniform1f(name, parameter);
             }
+            
+            if (type == "8ofColor_IhE") {
+                ofParameter<ofColor> parameter = (ofParameter<ofColor> &) parameterGroup[name];
+                shader->setUniform3f(name, parameter.get().r / 255.0,  parameter.get().g / 255.0,  parameter.get().b / 255.0);
+            }
         }
         texture.draw(rect.getX(), rect.getY(), rect.getWidth(), rect.getHeight());
         shader->end();

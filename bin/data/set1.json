@@ -2,5 +2,15 @@
     "filters": [
         "invertcolor",
         "limiter"
+    ],
+    "inputs": [
+        {
+            "type": "video",
+            "path": "Glitch001.mov"
+        },
+        {
+            "type": "video",
+            "path": "Glitch002.mov"
+        }
     ]
 }

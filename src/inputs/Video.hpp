@@ -14,6 +14,8 @@
 class Video : InputProtocol {
     ofJson data;
     ofVideoPlayer video;
+    ofFbo fbo;
+    ofPixels pixels;
     
 public:
     Video(ofJson data) {
@@ -24,6 +26,8 @@ public:
         if (!video.isLoaded()) {
             video.load(data["path"]);
             video.setLoopState(OF_LOOP_NORMAL);
+            
+            fbo.allocate(video.getWidth(), video.getHeight());
         };
         video.update();
     }
@@ -33,11 +37,15 @@ public:
     };
     
     ofPixels & getPixels() {
-        return video.getPixels();
+        updateFbo();
+        ofPixels &pixelsRef = pixels;
+        fbo.readToPixels(pixelsRef);
+        return pixelsRef;
     }
     
     ofTexture & getTexture() {
-        return video.getTexture();
+        updateFbo();
+        return fbo.getTexture();
     }
     
     void play() {
@@ -46,6 +54,12 @@ public:
     
     void stop() {
         video.stop();
+    }
+    
+    void updateFbo() {
+        fbo.begin();
+        video.draw(0,0);
+        fbo.end();
     }
     
 };
