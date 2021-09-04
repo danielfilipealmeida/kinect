@@ -57,9 +57,17 @@ public:
     }
     
     void updateFbo() {
+        if (!fbo.isAllocated()) {
+            return;
+        }
+        
         fbo.begin();
         video.draw(0,0);
         fbo.end();
+    }
+    
+    bool isActive() {
+        return (video.isLoaded() && fbo.isAllocated());
     }
     
 };

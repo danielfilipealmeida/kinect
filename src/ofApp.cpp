@@ -39,12 +39,12 @@ void ofApp::setup(){
                 throw new std::runtime_error("Invalid input type");
             }
         };
-        setLoader.filtersLambda = [&](ofJson data) {
+        setLoader.filtersLambda = [&](ofJson data){
             shaderBatch.setup(appShaders, data, ofRectangle(0, 0, 640, 480));
         };
         setLoader.loadFile("set1.json");
         
-        activeInput = inputs[0];
+        activeInput = inputs[1];
         activeInput->update();
         activeInput->play();
         // apply data
@@ -83,27 +83,29 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    try {
-        auto texFromPixels = [](ofPixels pixels) {
-            ofTexture tex;
-            tex.allocate(pixels);
+    if (activeInput->isActive()) {
+        try {
+            auto texFromPixels = [](ofPixels pixels) {
+                ofTexture tex;
+                tex.allocate(pixels);
+                
+                return tex;
+            };
             
-            return tex;
-        };
-        
-        ofSetColor(255, 255, 255);
-        
-        //ofTexture tex = texFromPixels(testImage.getPixels());
-        ofTexture tex = activeInput->getTexture();
-        shaderBatch.apply(tex);
-        shaderBatch.output.draw(0, 0, ofGetWidth(), ofGetHeight());
-    }
-    catch(std::runtime_error error) {
-        cout << error.what() << endl;
-        errors.push_front(error.what());
+            ofSetColor(255, 255, 255);
+            
+            //ofTexture tex = texFromPixels(testImage.getPixels());
+            ofTexture tex = activeInput->getTexture();
+            shaderBatch.apply(tex);
+            shaderBatch.output.draw(0, 0, ofGetWidth(), ofGetHeight());
+        }
+        catch(std::runtime_error error) {
+            cout << error.what() << endl;
+            errors.push_front(error.what());
+        }
     }
     
-    activeInput->draw(0,0,320,200);
+    
     gui.draw();
     
     // print errors

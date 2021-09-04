@@ -19,6 +19,7 @@ public:
     virtual ofTexture & getTexture() = 0;
     virtual void play() = 0;
     virtual void stop() = 0;
+    virtual bool isActive() = 0;
 };
 
 
