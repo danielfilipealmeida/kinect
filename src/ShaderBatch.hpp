@@ -31,49 +31,41 @@ public:
     }
     
     ofTexture newResizedTexture(ofTexture tex, unsigned int width, unsigned int height) {
+        ofTexture tmpTexture;
+        ofPixels tmpPixels;
+        tex.readToPixels(tmpPixels);
+        tmpTexture.allocate(tmpPixels);
         ofFbo tempFbo;
         tempFbo.allocate(width, height);
         
         tempFbo.begin();
-        tex.draw(0,0,width, height);
+        tmpTexture.draw(0,0,width, height);
         tempFbo.end();
         
         return tempFbo.getTexture();
     }
     
-    void applyShaderToTexture(std::string shaderName, ofTexture &tex) {
+    void applyShaderToTexture(std::string shaderName, ofTexture *tex) {
         output.begin();
-        appShaders.apply(shaderName, tex, rect);
+        appShaders.apply(shaderName, *tex, rect);
         output.end();
-        
-        // copy fbo pixels back to accumulator texture
-        tex = output.getTexture();
+    
     }
     
     void apply(ofTexture tex) {
-        bool firstFilter = true;
+        //ofTexture accumulatorTexture = newResizedTexture(tex, output.getWidth(), output.getHeight());
         
-        ofTexture accumulatorTexture = newResizedTexture(tex, output.getWidth(), output.getHeight());
-       
+        ofTexture *accumulatorTexture = &tex;
+        ofFbo tmpFbo;
+        tmpFbo.allocate(output.getWidth(), output.getHeight());
+        
+        
+        unsigned int count = 0;
         for (std::string shader:shaders) {
             applyShaderToTexture(shader, accumulatorTexture);
-            /*
-            if (firstFilter) {
-                output.begin();
-                appShaders.apply(shader, tex, rect);
-                output.end();
-                firstFilter = false;
-            }
-            else {
-                ofPixels pixels;
-                output.getTexture().readToPixels(pixels);
-                if (!tmpTex.isAllocated()) tmpTex.allocate(pixels); else tmpTex.readToPixels(pixels);
-              
-                output.begin();
-                appShaders.apply(shader, tmpTex, rect);
-                output.end();
-            }
-             */
+        
+            *accumulatorTexture = output.getTexture();
+            
         }
     }
     

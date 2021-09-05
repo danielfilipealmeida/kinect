@@ -1,5 +1,6 @@
 {
     "filters": [
+        "edgedetection",
         "limiter",
         "invertcolor"
     ],
@@ -11,6 +12,10 @@
         {
             "type": "video",
             "path": "Glitch002.mov"
+        },
+        {
+            "type": "video",
+            "path": "Mechanical_001.mov"
         }
     ]
 }

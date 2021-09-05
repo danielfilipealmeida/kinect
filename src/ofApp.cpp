@@ -40,11 +40,11 @@ void ofApp::setup(){
             }
         };
         setLoader.filtersLambda = [&](ofJson data){
-            shaderBatch.setup(appShaders, data, ofRectangle(0, 0, 640, 480));
+            shaderBatch.setup(appShaders, data, ofRectangle(0, 0, ofGetWidth(), ofGetHeight()));
         };
         setLoader.loadFile("set1.json");
         
-        activeInput = inputs[1];
+        activeInput = inputs[2];
         activeInput->update();
         activeInput->play();
         // apply data
@@ -54,7 +54,7 @@ void ofApp::setup(){
         //initKinect();
         testImage.load("Daniel.jpg");
         
-        fbo.allocate(320, 200);
+        fbo.allocate(640, 480);
     }
     catch (std::runtime_error error) {
         errors.push_front(error.what());
