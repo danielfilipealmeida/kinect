@@ -20,6 +20,8 @@
 		6554E09B2690CA390035DC15 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6554E0872690CA390035DC15 /* ofxLabel.cpp */; };
 		6554E09C2690CA390035DC15 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6554E0902690CA390035DC15 /* ofxPanel.cpp */; };
 		6554E09D2690CA390035DC15 /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6554E0912690CA390035DC15 /* ofxSlider.cpp */; };
+		655C4D2B272EC00B00B407E9 /* scratch_001.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 655C4D2A272EBFDB00B407E9 /* scratch_001.mov */; };
+		655C4D2C272EC00F00B407E9 /* scratch_002.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 655C4D29272EBFDB00B407E9 /* scratch_002.mov */; };
 		6576125026428D1E00C2F4D5 /* ofxKinect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65B53AB12641EB790029BBB6 /* ofxKinect.cpp */; };
 		65765A48265FA9FC00B6F24A /* basic.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65765A44265FA9F600B6F24A /* basic.vert */; };
 		65765A49265FA9FC00B6F24A /* edgedetection.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65765A47265FA9F600B6F24A /* edgedetection.frag */; };
@@ -67,6 +69,8 @@
 			dstPath = data;
 			dstSubfolderSpec = 16;
 			files = (
+				655C4D2B272EC00B00B407E9 /* scratch_001.mov in CopyFiles */,
+				655C4D2C272EC00F00B407E9 /* scratch_002.mov in CopyFiles */,
 				65BDBB6726E4FC9800EDDEC3 /* Mechanical_001.mov in CopyFiles */,
 				65BDBB6526E3C99B00EDDEC3 /* Glitch002.mov in CopyFiles */,
 				65879C8826C2F7B500CA7EB8 /* Glitch001.mov in CopyFiles */,
@@ -113,6 +117,8 @@
 		6554E0912690CA390035DC15 /* ofxSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSlider.cpp; sourceTree = "<group>"; };
 		6554E0922690CA390035DC15 /* ofxColorPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxColorPicker.h; sourceTree = "<group>"; };
 		6554E0932690CA390035DC15 /* ofxPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPanel.h; sourceTree = "<group>"; };
+		655C4D29272EBFDB00B407E9 /* scratch_002.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = scratch_002.mov; sourceTree = "<group>"; };
+		655C4D2A272EBFDB00B407E9 /* scratch_001.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = scratch_001.mov; sourceTree = "<group>"; };
 		65765A41265FA9F500B6F24A /* limiter.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = limiter.frag; sourceTree = "<group>"; };
 		65765A42265FA9F600B6F24A /* template.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = template.frag; sourceTree = "<group>"; };
 		65765A43265FA9F600B6F24A /* grayscale.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = grayscale.frag; sourceTree = "<group>"; };
@@ -460,6 +466,8 @@
 				65879C8726C2F79200CA7EB8 /* Glitch001.mov */,
 				65BDBB6426E3BC1D00EDDEC3 /* Glitch002.mov */,
 				65BDBB6626E4FC8E00EDDEC3 /* Mechanical_001.mov */,
+				655C4D2A272EBFDB00B407E9 /* scratch_001.mov */,
+				655C4D29272EBFDB00B407E9 /* scratch_002.mov */,
 			);
 			path = videos;
 			sourceTree = "<group>";
@@ -1375,12 +1383,14 @@
 					"$(OF_CORE_HEADERS)",
 					src,
 					src,
+					"$(LIB_USB_INCLUDE_PATH)",
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIB_USB_INCLUDE_PATH = "\"$(OF_PATH)/addons/ofxKinect/libs/libusb/include";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
@@ -1470,12 +1480,14 @@
 					"$(OF_CORE_HEADERS)",
 					src,
 					src,
+					"$(LIB_USB_INCLUDE_PATH)",
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIB_USB_INCLUDE_PATH = "\"$(OF_PATH)/addons/ofxKinect/libs/libusb/include";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",
@@ -1499,12 +1511,14 @@
 					"$(OF_CORE_HEADERS)",
 					src,
 					src,
+					"$(LIB_USB_INCLUDE_PATH)",
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIB_USB_INCLUDE_PATH = "\"$(OF_PATH)/addons/ofxKinect/libs/libusb/include";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
 					"$(OF_CORE_FRAMEWORKS)",

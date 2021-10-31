@@ -19,7 +19,9 @@ class ofApp : public ofBaseApp{
     SetLoader setLoader;
     
 	public:
-		void setup();
+    void extracted();
+    
+    void setup();
 		void update();
 		void draw();
 		
@@ -38,6 +40,8 @@ class ofApp : public ofBaseApp{
     
     void initKinect();
     void initUI();
+    void loadSet(std::string setPath);
+    
     
     ofxKinect kinect;
     int angle;

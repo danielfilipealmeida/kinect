@@ -15,6 +15,26 @@ void ofApp::initUI(){
     gui.init(&appShaders, &shaderBatch);
 }
 
+
+
+void ofApp::loadSet(std::string setPath) {
+    setLoader.inputsLambda = [&](ofJson data) {
+        for(auto& [index, input]  : data.items()) {
+            if  (input["type"] == "video") {
+                Video *video = new Video(input);
+                inputs.push_back((InputProtocol *) video);
+                continue;
+            }
+            
+            throw new std::runtime_error("Invalid input type");
+        }
+    };
+    setLoader.filtersLambda = [&](ofJson data){
+        shaderBatch.setup(appShaders, data, ofRectangle(0, 0, ofGetWidth(), ofGetHeight()));
+    };
+    setLoader.loadFile(setPath);
+}
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetVerticalSync(true);
@@ -28,23 +48,9 @@ void ofApp::setup(){
         appShaders.loadConfig(shaderData);
         
       
-        setLoader.inputsLambda = [&](ofJson data) {
-            for(auto& [index, input]  : data.items()) {
-                if  (input["type"] == "video") {
-                    Video *video = new Video(input);
-                    inputs.push_back((InputProtocol *) video);
-                    continue;
-                }
-                        
-                throw new std::runtime_error("Invalid input type");
-            }
-        };
-        setLoader.filtersLambda = [&](ofJson data){
-            shaderBatch.setup(appShaders, data, ofRectangle(0, 0, ofGetWidth(), ofGetHeight()));
-        };
-        setLoader.loadFile("set1.json");
+        loadSet("set1.json");
         
-        activeInput = inputs[2];
+        activeInput = inputs[1];
         activeInput->update();
         activeInput->play();
         // apply data

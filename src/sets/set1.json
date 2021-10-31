@@ -7,15 +7,24 @@
     "inputs": [
         {
             "type": "video",
-            "path": "Glitch001.mov"
+            "path": "scratch_001.mov"
         },
         {
             "type": "video",
-            "path": "Glitch002.mov"
+            "path": "scratch_002.mov"
         },
         {
             "type": "video",
             "path": "Mechanical_001.mov"
+        }
+    ],
+    "channels": [
+        {
+            "visual": 0,
+            "filterBatch": [
+                "limiter",
+                "invertcolor"
+            ]
         }
     ]
 }
