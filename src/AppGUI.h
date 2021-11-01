@@ -9,49 +9,31 @@
 #define AppGUI_h
 
 #include "ofxGui.h"
+#include "UI/ShaderBatch.h"
+#include "UI/Shaders.h"
 
 
 class AppGUI {
   
 public:
-    ofxPanel shadersPanel, shaderBatchPanel;
+    ShaderBatchUI shaderBatchUI;
+    ShadersUI shadersUI;
     
-    /*!
-     Sets up the user interface for all shaders
-     */
-    void setupShaderPanel(AppShaders* shaders) {
-        shadersPanel.setup();
-        shadersPanel.setName("All Shaders");
-        shaders->each([this, shaders](std::string shaderName, ofShader* shader) {
-            //shadersPanel.add(shaders->getParameterForShader(shaderName));
-        });
-    }
-    
-    /*!
-     Sets up the user interface for a shader batch
-     */
-    void setupShaderBatchPanel(AppShaders* shaders, ShaderBatch* shaderBatch) {
-        shaderBatchPanel.setup();
-        shaderBatchPanel.setName("Shader Batch");
-        shaderBatch->each([this, shaders](std::string shaderName, ofShader* shader) {
-            shaderBatchPanel.add(shaders->getParameterForShader(shaderName));
-        });
-    }
     
     /*!
      Sets up all the panels
      */
     void init(AppShaders* shaders, ShaderBatch* shaderBatch) {
-        setupShaderPanel(shaders);
-        setupShaderBatchPanel(shaders, shaderBatch);
+        shaderBatchUI.setup(shaders, shaderBatch);
+        shadersUI.setup(shaders);
     };
     
     /*!
      Drawss all shaders
      */
     void draw() {
-        shadersPanel.draw();
-        shaderBatchPanel.draw();
+        shadersUI.draw();
+        shaderBatchUI.draw();
     }
     
 };

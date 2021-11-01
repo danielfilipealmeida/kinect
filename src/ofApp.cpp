@@ -17,6 +17,8 @@ void ofApp::initUI(){
 
 
 
+/// Loads a set from a given json stored in the path
+/// @param setPath the path of the json file s
 void ofApp::loadSet(std::string setPath) {
     setLoader.inputsLambda = [&](ofJson data) {
         for(auto& [index, input]  : data.items()) {

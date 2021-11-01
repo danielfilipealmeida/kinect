@@ -5,3 +5,13 @@
 		<upperLimit>0.581633</upperLimit>
 	</limiter>
 </group>
+<Shader_Batch>
+	<edgedetection />
+	<limiter>
+		<lowerLimit>0</lowerLimit>
+		<upperLimit>1</upperLimit>
+	</limiter>
+	<invertcolor>
+		<color>255, 255, 255, 255</color>
+	</invertcolor>
+</Shader_Batch>

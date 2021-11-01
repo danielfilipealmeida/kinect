@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		650D375A266BADE5007CC897 /* invertcolor.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 650D3759266BACB0007CC897 /* invertcolor.frag */; };
 		650D375D266BCA18007CC897 /* shaders.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 650D375C266BC99F007CC897 /* shaders.json */; };
-		650E34D4264718C600529D39 /* Daniel.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 650E34D32647187800529D39 /* Daniel.jpg */; };
 		6554E0942690CA390035DC15 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6554E07F2690CA390035DC15 /* ofxBaseGui.cpp */; };
 		6554E0952690CA390035DC15 /* ofxColorPicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6554E0802690CA390035DC15 /* ofxColorPicker.cpp */; };
 		6554E0962690CA390035DC15 /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6554E0812690CA390035DC15 /* ofxSliderGroup.cpp */; };
@@ -22,6 +21,7 @@
 		6554E09D2690CA390035DC15 /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6554E0912690CA390035DC15 /* ofxSlider.cpp */; };
 		655C4D2B272EC00B00B407E9 /* scratch_001.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 655C4D2A272EBFDB00B407E9 /* scratch_001.mov */; };
 		655C4D2C272EC00F00B407E9 /* scratch_002.mov in CopyFiles */ = {isa = PBXBuildFile; fileRef = 655C4D29272EBFDB00B407E9 /* scratch_002.mov */; };
+		655C4D34272F671A00B407E9 /* Roboto-Medium.ttf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 655C4D33272F66F300B407E9 /* Roboto-Medium.ttf */; };
 		6576125026428D1E00C2F4D5 /* ofxKinect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 65B53AB12641EB790029BBB6 /* ofxKinect.cpp */; };
 		65765A48265FA9FC00B6F24A /* basic.vert in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65765A44265FA9F600B6F24A /* basic.vert */; };
 		65765A49265FA9FC00B6F24A /* edgedetection.frag in CopyFiles */ = {isa = PBXBuildFile; fileRef = 65765A47265FA9F600B6F24A /* edgedetection.frag */; };
@@ -69,6 +69,7 @@
 			dstPath = data;
 			dstSubfolderSpec = 16;
 			files = (
+				655C4D34272F671A00B407E9 /* Roboto-Medium.ttf in CopyFiles */,
 				655C4D2B272EC00B00B407E9 /* scratch_001.mov in CopyFiles */,
 				655C4D2C272EC00F00B407E9 /* scratch_002.mov in CopyFiles */,
 				65BDBB6726E4FC9800EDDEC3 /* Mechanical_001.mov in CopyFiles */,
@@ -83,7 +84,6 @@
 				65765A4D265FA9FC00B6F24A /* template.frag in CopyFiles */,
 				650D375A266BADE5007CC897 /* invertcolor.frag in CopyFiles */,
 				65765A4E265FA9FC00B6F24A /* threshold.frag in CopyFiles */,
-				650E34D4264718C600529D39 /* Daniel.jpg in CopyFiles */,
 				650D375D266BCA18007CC897 /* shaders.json in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,7 +93,6 @@
 /* Begin PBXFileReference section */
 		650D3759266BACB0007CC897 /* invertcolor.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = invertcolor.frag; sourceTree = "<group>"; };
 		650D375C266BC99F007CC897 /* shaders.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = shaders.json; sourceTree = "<group>"; };
-		650E34D32647187800529D39 /* Daniel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Daniel.jpg; sourceTree = "<group>"; };
 		6554E0622690C4420035DC15 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6554E07E2690CA390035DC15 /* ofxGuiGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGuiGroup.h; sourceTree = "<group>"; };
 		6554E07F2690CA390035DC15 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseGui.cpp; sourceTree = "<group>"; };
@@ -119,6 +118,10 @@
 		6554E0932690CA390035DC15 /* ofxPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPanel.h; sourceTree = "<group>"; };
 		655C4D29272EBFDB00B407E9 /* scratch_002.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = scratch_002.mov; sourceTree = "<group>"; };
 		655C4D2A272EBFDB00B407E9 /* scratch_001.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = scratch_001.mov; sourceTree = "<group>"; };
+		655C4D2E272F56FD00B407E9 /* Shaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shaders.h; sourceTree = "<group>"; };
+		655C4D2F272F576E00B407E9 /* ShaderBatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderBatch.h; sourceTree = "<group>"; };
+		655C4D30272F5EDF00B407E9 /* UIPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPanel.h; sourceTree = "<group>"; };
+		655C4D33272F66F300B407E9 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		65765A41265FA9F500B6F24A /* limiter.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = limiter.frag; sourceTree = "<group>"; };
 		65765A42265FA9F600B6F24A /* template.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = template.frag; sourceTree = "<group>"; };
 		65765A43265FA9F600B6F24A /* grayscale.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = grayscale.frag; sourceTree = "<group>"; };
@@ -386,14 +389,6 @@
 			path = configs;
 			sourceTree = "<group>";
 		};
-		650E34D22647187800529D39 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				650E34D32647187800529D39 /* Daniel.jpg */,
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
 		6554E07C2690CA390035DC15 /* ofxGui */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,6 +425,32 @@
 				6554E0932690CA390035DC15 /* ofxPanel.h */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		655C4D2D272F56D200B407E9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				655C4D2E272F56FD00B407E9 /* Shaders.h */,
+				655C4D2F272F576E00B407E9 /* ShaderBatch.h */,
+				655C4D30272F5EDF00B407E9 /* UIPanel.h */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		655C4D31272F66F300B407E9 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				655C4D32272F66F300B407E9 /* fonts */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		655C4D32272F66F300B407E9 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				655C4D33272F66F300B407E9 /* Roboto-Medium.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		658402FB26AF6439001BCA13 /* loaders */ = {
@@ -966,11 +987,12 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				655C4D31272F66F300B407E9 /* assets */,
+				655C4D2D272F56D200B407E9 /* UI */,
 				65879C8A26C31F2E00CA7EB8 /* inputs */,
 				658402FB26AF6439001BCA13 /* loaders */,
 				65878A3326AE162D0019E7D1 /* sets */,
 				650D375B266BC991007CC897 /* configs */,
-				650E34D22647187800529D39 /* images */,
 				65B71E972644963600A70E97 /* shaders */,
 				65879C8626C2F79200CA7EB8 /* videos */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
