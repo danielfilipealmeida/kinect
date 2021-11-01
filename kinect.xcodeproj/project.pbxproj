@@ -122,6 +122,7 @@
 		655C4D2F272F576E00B407E9 /* ShaderBatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderBatch.h; sourceTree = "<group>"; };
 		655C4D30272F5EDF00B407E9 /* UIPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPanel.h; sourceTree = "<group>"; };
 		655C4D33272F66F300B407E9 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		655C4D3527300EB400B407E9 /* AppData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppData.h; sourceTree = "<group>"; };
 		65765A41265FA9F500B6F24A /* limiter.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = limiter.frag; sourceTree = "<group>"; };
 		65765A42265FA9F600B6F24A /* template.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = template.frag; sourceTree = "<group>"; };
 		65765A43265FA9F600B6F24A /* grayscale.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = grayscale.frag; sourceTree = "<group>"; };
@@ -996,6 +997,7 @@
 				65B71E972644963600A70E97 /* shaders */,
 				65879C8626C2F79200CA7EB8 /* videos */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				655C4D3527300EB400B407E9 /* AppData.h */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				65765A4F265FB89600B6F24A /* AppShaders.hpp */,

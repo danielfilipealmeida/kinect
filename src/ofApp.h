@@ -7,6 +7,7 @@
 #include "AppGUI.h"
 #include "SetLoader.hpp"
 #include "InputProtocol.hpp"
+#include "AppData.h"
 
 class ofApp : public ofBaseApp{
     std::list<std::string> errors;
@@ -49,12 +50,9 @@ class ofApp : public ofBaseApp{
     ofPixels depthImage;
     
     ofFbo fbo;
-    ofShader limiterShader, thresholdShader, noiseShader, edgedetectionShader, grayscaleShader;
-    ofImage testImage;
     
     
-    AppShaders appShaders;
-    ShaderBatch shaderBatch;
     
     AppGUI gui;
+    AppData appData;
 };

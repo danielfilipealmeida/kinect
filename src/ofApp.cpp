@@ -12,9 +12,8 @@ void ofApp::initKinect()
 }
 
 void ofApp::initUI(){
-    gui.init(&appShaders, &shaderBatch);
+    gui.init(&appData);
 }
-
 
 
 /// Loads a set from a given json stored in the path
@@ -32,7 +31,7 @@ void ofApp::loadSet(std::string setPath) {
         }
     };
     setLoader.filtersLambda = [&](ofJson data){
-        shaderBatch.setup(appShaders, data, ofRectangle(0, 0, ofGetWidth(), ofGetHeight()));
+        appData.shaderBatch.setup(appData.shaders, data, ofRectangle(0, 0, ofGetWidth(), ofGetHeight()));
     };
     setLoader.loadFile(setPath);
 }
@@ -47,7 +46,7 @@ void ofApp::setup(){
         // load shaders
         ofJson shaderData = ofLoadJson("shaders.json");
         if (shaderData.empty()) throw new std::runtime_error("Error loading Shaders information.");
-        appShaders.loadConfig(shaderData);
+        appData.shaders.loadConfig(shaderData);
         
       
         loadSet("set1.json");
@@ -60,7 +59,6 @@ void ofApp::setup(){
         
         
         //initKinect();
-        testImage.load("Daniel.jpg");
         
         fbo.allocate(640, 480);
     }
@@ -76,7 +74,7 @@ void ofApp::update(){
     ofBackground(100, 100, 100);
     activeInput->update();
     
-    shaderBatch.update();
+    appData.shaderBatch.update();
     
     
     
@@ -104,8 +102,8 @@ void ofApp::draw(){
             
             //ofTexture tex = texFromPixels(testImage.getPixels());
             ofTexture tex = activeInput->getTexture();
-            shaderBatch.apply(tex);
-            shaderBatch.output.draw(0, 0, ofGetWidth(), ofGetHeight());
+            appData.shaderBatch.apply(tex);
+            appData.shaderBatch.output.draw(0, 0, ofGetWidth(), ofGetHeight());
         }
         catch(std::runtime_error error) {
             cout << error.what() << endl;

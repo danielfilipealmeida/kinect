@@ -6,7 +6,11 @@ Exploratory project using the Kinect
 
 - [x] create a repo on github
 - [x] control parameters
-- [  ] user interface  that shows shaders parameters
+- [x] user interface  that shows shaders parameters
+- [ ] UI 
+-- [ ] Show visuals
+-- [ ] Show channels
+
 
 
 

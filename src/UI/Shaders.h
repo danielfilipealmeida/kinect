@@ -9,15 +9,16 @@
 #define ShadersUI_h
 
 #include "UIPanel.h"
+#include "AppData.h"
 
 class ShadersUI : public UIPanel {
 
 public:
-    void setup(AppShaders* shaders) {
-        UIPanel::setup();
+    void setup(AppData *_appData) {
+        UIPanel::setup(_appData, 0);
         panel.setName("All Shaders");
-        shaders->each([this, shaders](std::string shaderName, ofShader* shader) {
-            panel.add(shaders->getParameterForShader(shaderName));
+        appData->shaders.each([this](std::string shaderName, ofShader* shader) {
+            panel.add(this->appData->shaders.getParameterForShader(shaderName));
         });
     }
     

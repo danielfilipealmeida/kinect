@@ -8,17 +8,21 @@
 #ifndef UIPanel_h
 #define UIPanel_h
 
+#include "AppData.h"
+
 class UIPanel {
 public:
     ofxGuiGroup panel;
     unsigned int width;
     unsigned int column;
+    AppData *appData;
     
     UIPanel() {
         width = 150;
     }
     
-    void setup(unsigned int _column = 0) {
+    void setup(AppData *_appData, unsigned int _column = 0) {
+        appData = _appData;
         column = _column;
         panel.setup();
         panel.setWidthElements(width);

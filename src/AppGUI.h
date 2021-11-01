@@ -18,14 +18,16 @@ class AppGUI {
 public:
     ShaderBatchUI shaderBatchUI;
     ShadersUI shadersUI;
+    AppData *appData;
     
     
     /*!
      Sets up all the panels
      */
-    void init(AppShaders* shaders, ShaderBatch* shaderBatch) {
-        shaderBatchUI.setup(shaders, shaderBatch);
-        shadersUI.setup(shaders);
+    void init(AppData *_appData) {
+        appData = _appData;
+        shaderBatchUI.setup(appData);
+        shadersUI.setup(appData);
     };
     
     /*!
