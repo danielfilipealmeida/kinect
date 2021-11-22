@@ -5,19 +5,11 @@
 #include "AppShaders.hpp"
 #include "ShaderBatch.hpp"
 #include "AppGUI.h"
-#include "SetLoader.hpp"
-#include "InputProtocol.hpp"
 #include "AppData.h"
 
 class ofApp : public ofBaseApp{
     std::list<std::string> errors;
-    
-    std::vector<InputProtocol *> inputs;
-    
-    // todo, move this to a layer
-    InputProtocol *activeInput;
-    
-    SetLoader setLoader;
+    long unsigned int frameNumber;
     
 	public:
     void extracted();
@@ -43,6 +35,7 @@ class ofApp : public ofBaseApp{
     void initUI();
     void loadSet(std::string setPath);
     
+    void generateScreenshots();
     
     ofxKinect kinect;
     int angle;

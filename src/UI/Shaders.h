@@ -14,16 +14,12 @@
 class ShadersUI : public UIPanel {
 
 public:
-    void setup(AppData *_appData) {
-        UIPanel::setup(_appData, 0);
+    void setup(AppData *_appData, unsigned int _column = 0) {
+        UIPanel::setup(_appData, _column);
         panel.setName("All Shaders");
         appData->shaders.each([this](std::string shaderName, ofShader* shader) {
             panel.add(this->appData->shaders.getParameterForShader(shaderName));
         });
-    }
-    
-    void draw() {
-        panel.draw();
     }
 };
 

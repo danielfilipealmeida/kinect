@@ -11,13 +11,16 @@
 #include "ofxGui.h"
 #include "UI/ShaderBatch.h"
 #include "UI/Shaders.h"
-
+#include "UI/Inputs.h"
 
 class AppGUI {
   
 public:
+    bool show;
+    
     ShaderBatchUI shaderBatchUI;
     ShadersUI shadersUI;
+    InputsUI inputsUI;
     AppData *appData;
     
     
@@ -25,17 +28,22 @@ public:
      Sets up all the panels
      */
     void init(AppData *_appData) {
+        show = true;
         appData = _appData;
-        shaderBatchUI.setup(appData);
-        shadersUI.setup(appData);
+        shaderBatchUI.setup(appData, 0);
+        shadersUI.setup(appData, 1);
+        inputsUI.setup(appData, 2);
     };
     
     /*!
-     Drawss all shaders
+     Draws all shaders
      */
     void draw() {
+        if (!show) return;
+        
         shadersUI.draw();
         shaderBatchUI.draw();
+        inputsUI.draw();
     }
     
 };

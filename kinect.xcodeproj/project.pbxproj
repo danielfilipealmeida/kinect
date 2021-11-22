@@ -123,6 +123,9 @@
 		655C4D30272F5EDF00B407E9 /* UIPanel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIPanel.h; sourceTree = "<group>"; };
 		655C4D33272F66F300B407E9 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		655C4D3527300EB400B407E9 /* AppData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppData.h; sourceTree = "<group>"; };
+		655C4D36273049D500B407E9 /* Inputs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Inputs.h; sourceTree = "<group>"; };
+		655C4D3827304DCF00B407E9 /* ofxFbo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxFbo.h; sourceTree = "<group>"; };
+		655C4D39273055EC00B407E9 /* Inputs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Inputs.h; sourceTree = "<group>"; };
 		65765A41265FA9F500B6F24A /* limiter.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = limiter.frag; sourceTree = "<group>"; };
 		65765A42265FA9F600B6F24A /* template.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = template.frag; sourceTree = "<group>"; };
 		65765A43265FA9F600B6F24A /* grayscale.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = grayscale.frag; sourceTree = "<group>"; };
@@ -431,9 +434,11 @@
 		655C4D2D272F56D200B407E9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				655C4D3727304DA500B407E9 /* ofxAddons */,
+				655C4D30272F5EDF00B407E9 /* UIPanel.h */,
 				655C4D2E272F56FD00B407E9 /* Shaders.h */,
 				655C4D2F272F576E00B407E9 /* ShaderBatch.h */,
-				655C4D30272F5EDF00B407E9 /* UIPanel.h */,
+				655C4D36273049D500B407E9 /* Inputs.h */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -452,6 +457,14 @@
 				655C4D33272F66F300B407E9 /* Roboto-Medium.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		655C4D3727304DA500B407E9 /* ofxAddons */ = {
+			isa = PBXGroup;
+			children = (
+				655C4D3827304DCF00B407E9 /* ofxFbo.h */,
+			);
+			path = ofxAddons;
 			sourceTree = "<group>";
 		};
 		658402FB26AF6439001BCA13 /* loaders */ = {
@@ -1003,6 +1016,7 @@
 				65765A4F265FB89600B6F24A /* AppShaders.hpp */,
 				65765A5026640B1A00B6F24A /* ShaderBatch.hpp */,
 				65ED8BB826ADCC4A00501FA1 /* AppGUI.h */,
+				655C4D39273055EC00B407E9 /* Inputs.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;

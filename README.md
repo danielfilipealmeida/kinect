@@ -8,7 +8,7 @@ Exploratory project using the Kinect
 - [x] control parameters
 - [x] user interface  that shows shaders parameters
 - [ ] UI 
--- [ ] Show visuals
+-- [ ] Show visuals [working on this]
 -- [ ] Show channels
 
 
@@ -16,4 +16,6 @@ Exploratory project using the Kinect
 
 ### currently working
 
-- [ ] show all active shaders with all parameters
+- [ ] Show visuals:
+- [ ] create the widget
+- [ ] configure the widget to show the visual

@@ -1,5 +1,5 @@
 #include "ofApp.h"
-#include "Video.hpp"
+
 
 
 void ofApp::initKinect()
@@ -16,48 +16,23 @@ void ofApp::initUI(){
 }
 
 
-/// Loads a set from a given json stored in the path
-/// @param setPath the path of the json file s
-void ofApp::loadSet(std::string setPath) {
-    setLoader.inputsLambda = [&](ofJson data) {
-        for(auto& [index, input]  : data.items()) {
-            if  (input["type"] == "video") {
-                Video *video = new Video(input);
-                inputs.push_back((InputProtocol *) video);
-                continue;
-            }
-            
-            throw new std::runtime_error("Invalid input type");
-        }
-    };
-    setLoader.filtersLambda = [&](ofJson data){
-        appData.shaderBatch.setup(appData.shaders, data, ofRectangle(0, 0, ofGetWidth(), ofGetHeight()));
-    };
-    setLoader.loadFile(setPath);
-}
 
 //--------------------------------------------------------------
 void ofApp::setup(){
     ofSetVerticalSync(true);
-    ofSetLogLevel(OF_LOG_VERBOSE);
+    ofSetLogLevel(OF_LOG_NOTICE);
     ofSetFrameRate(60);
+    frameNumber = 0;
     
     try {
         // load shaders
         ofJson shaderData = ofLoadJson("shaders.json");
         if (shaderData.empty()) throw new std::runtime_error("Error loading Shaders information.");
         appData.shaders.loadConfig(shaderData);
+        appData.loadSet("set1.json");
         
-      
-        loadSet("set1.json");
-        
-        activeInput = inputs[1];
-        activeInput->update();
-        activeInput->play();
-        // apply data
-        
-        
-        
+
+    
         //initKinect();
         
         fbo.allocate(640, 480);
@@ -66,14 +41,26 @@ void ofApp::setup(){
         errors.push_front(error.what());
     }
     
-    initUI();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    ofBackground(100, 100, 100);
-    activeInput->update();
+    if (!appData.inputs.screenshotsGenerated && frameNumber>0) {
+        appData.inputs.generateScreenshots();
+        if (!appData.inputs.screenshotsGenerated) {
+            return;
+        }
+        
+        // only inits the UI when the screenshots are generated
+        initUI();
+
+        appData.activeInput->play();
+        
+    }
     
+    
+    ofBackground(0, 0, 0);
+    appData.activeInput->update();
     appData.shaderBatch.update();
     
     
@@ -84,12 +71,13 @@ void ofApp::update(){
         depthImage = kinect.getDepthPixels();
     }
      */
+    frameNumber++;
     
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    if (activeInput->isActive()) {
+    if (appData.activeInput->isActive()) {
         try {
             auto texFromPixels = [](ofPixels pixels) {
                 ofTexture tex;
@@ -101,7 +89,7 @@ void ofApp::draw(){
             ofSetColor(255, 255, 255);
             
             //ofTexture tex = texFromPixels(testImage.getPixels());
-            ofTexture tex = activeInput->getTexture();
+            ofTexture tex = appData.activeInput->getTexture();
             appData.shaderBatch.apply(tex);
             appData.shaderBatch.output.draw(0, 0, ofGetWidth(), ofGetHeight());
         }

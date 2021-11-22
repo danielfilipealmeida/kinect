@@ -34,6 +34,11 @@ public:
         panel.setUseTTF(true);
         panel.loadFont("Roboto-Medium.ttf", 10);
     }
+
+    
+    void draw() {
+        panel.draw();
+    }
 };
 
 #endif /* UIPanel_h */

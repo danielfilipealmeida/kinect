@@ -2,7 +2,9 @@
     "edgedetection": {
         "parameters": {}
     },
-    "grayscape": {},
+    "grayscale": {
+        "parameters": {}
+    },
     "noise": {
         "parameters": {
             "noise": {
