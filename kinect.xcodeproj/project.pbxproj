@@ -93,6 +93,7 @@
 /* Begin PBXFileReference section */
 		650D3759266BACB0007CC897 /* invertcolor.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = invertcolor.frag; sourceTree = "<group>"; };
 		650D375C266BC99F007CC897 /* shaders.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = shaders.json; sourceTree = "<group>"; };
+		6518402F274C4240006D36EA /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
 		6554E0622690C4420035DC15 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6554E07E2690CA390035DC15 /* ofxGuiGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGuiGroup.h; sourceTree = "<group>"; };
 		6554E07F2690CA390035DC15 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseGui.cpp; sourceTree = "<group>"; };
@@ -512,6 +513,7 @@
 			children = (
 				65879C8B26C31F5100CA7EB8 /* InputProtocol.hpp */,
 				65879C8C26C31F9F00CA7EB8 /* Video.hpp */,
+				6518402F274C4240006D36EA /* Camera.h */,
 			);
 			path = inputs;
 			sourceTree = "<group>";

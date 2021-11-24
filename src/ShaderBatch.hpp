@@ -16,6 +16,7 @@ class ShaderBatch {
     
 public:
     std::vector<std::string> shaders;
+
     ofFbo output;
     ofRectangle rect;
     ofTexture tmpTex;
@@ -45,32 +46,77 @@ public:
         return tempFbo.getTexture();
     }
     
+    unsigned int countEnabledShaders() {
+        unsigned int counter = 0;
+        for (std::string shader:shaders) {
+            if (appShaders.isShaderEnabled(shader)) counter++;
+        }
+        
+        return counter;
+    }
+    
+    /*!
+     Applies one shader to a texture
+     Will leave early if the shader is disabled
+     @param shaderName
+     @param tex
+     */
     void applyShaderToTexture(std::string shaderName, ofTexture *tex) {
+        if (!appShaders.isShaderEnabled(shaderName)) return;
+    
         output.begin();
         appShaders.apply(shaderName, *tex, rect);
         output.end();
-    
     }
     
+    
+    /*!
+     Applies all shaders in this shader batch to a texture
+     @param tex
+     */
     void apply(ofTexture tex) {
-        //ofTexture accumulatorTexture = newResizedTexture(tex, output.getWidth(), output.getHeight());
+         ofTexture *accumulatorTexture = &tex;
+        //ofFbo tmpFbo;
+        //tmpFbo.allocate(output.getWidth(), output.getHeight());
         
-        ofTexture *accumulatorTexture = &tex;
-        ofFbo tmpFbo;
-        tmpFbo.allocate(output.getWidth(), output.getHeight());
-        
-        
-        unsigned int count = 0;
+        unsigned int counter = countEnabledShaders();
+        if (counter == 0) {
+            output.begin();
+            tex.draw(0, 0, output.getWidth(), output.getHeight());
+            output.end();
+        };
+        if (counter == 1) {
+            std::string shaderName;
+            for(std::string shader:shaders) {
+                if (appShaders.isShaderEnabled(shader)) {
+                    shaderName = shader;
+                    break;
+                }
+            }
+            applyShaderToTexture(shaderName, &tex);
+            return;
+        }
         for (std::string shader:shaders) {
             applyShaderToTexture(shader, accumulatorTexture);
-        
             *accumulatorTexture = output.getTexture();
-            
         }
+        
+        //tex = *accumulatorTexture;
     }
     
     void update() {
        
+    }
+
+    /*!
+     Draws the current shader batch output
+     @param x
+     @param y
+     @param width
+     @param height
+     */
+    void draw(unsigned int x, unsigned int y, unsigned int width, unsigned  int height){
+        output.draw(x,y,width,height);
     }
     
     /*!

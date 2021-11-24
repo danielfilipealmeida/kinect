@@ -15,14 +15,15 @@
 class ShaderBatchUI : public UIPanel {
     
 public:
-    ShaderBatchUI() {}
+    ShaderBatchUI(){}
     
     void setup(AppData *_appData, unsigned int _column = 0) {
         UIPanel::setup(_appData, _column);
         panel.setName("Shader Batch");
         appData->shaderBatch.each([this](std::string shaderName, ofShader* shader) {
-            panel.add(this->appData->shaders.getParameterForShader(shaderName));
+            panel.add(this->appData->shaders.getParameterForShader(shaderName));            
         });
+        
     }
 };
 

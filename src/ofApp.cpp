@@ -91,7 +91,7 @@ void ofApp::draw(){
             //ofTexture tex = texFromPixels(testImage.getPixels());
             ofTexture tex = appData.activeInput->getTexture();
             appData.shaderBatch.apply(tex);
-            appData.shaderBatch.output.draw(0, 0, ofGetWidth(), ofGetHeight());
+            appData.shaderBatch.draw(0, 0, ofGetWidth(), ofGetHeight());
         }
         catch(std::runtime_error error) {
             cout << error.what() << endl;

@@ -21,10 +21,10 @@
 class AppShaders {
     ofJson config;
     std::map<std::string, ofParameterGroup> parameterGroups;
-    
 public:
     
     std::map<std::string, ofShader*> shaders;
+    
     
     AppShaders() {}
     
@@ -41,10 +41,6 @@ public:
                 }
             }
         }
-        
-        shaders["limiter"]->begin();
-        shaders["limiter"]->setUniform1f("lowerLimit", 100);
-        shaders["limiter"]->end();
     }
     
     /*!
@@ -76,11 +72,19 @@ public:
             }
         }
         
+        // Add the enable checkbox parameter
+        ofParameter<bool> enable;
+        enable.setName("Enabled");
+        enable = true;
+        group.add(enable);
+        
         parameterGroups[shaderName] = group;
     }
     
-    ofParameterGroup getParameterForShader(std::string shaderName) {
-        return parameterGroups[shaderName];
+    /*!
+     */
+     ofParameterGroup getParameterForShader(std::string shaderName) {
+         return parameterGroups[shaderName];
     }
     
     /*!
@@ -100,6 +104,9 @@ public:
     }
     
     /*!
+     Opens a fragment the shader stored in a choosen fragment file and using a simple vertex file.
+     This is used to open only fragment shaders
+     @param shaderName  the name of the shader. The filename without the termination
      */
     void loadShader(std::string shaderName) {
         if (hasShader(shaderName)) return;
@@ -109,7 +116,16 @@ public:
         shaders[shaderName] = newShader;
     }
     
+    bool isShaderEnabled(std::string shaderName) {
+        ofParameterGroup parameterGroup = parameterGroups[shaderName];
+        return (ofParameter<bool> &) parameterGroup[std::string("Enabled")];;
+    }
+    
     /*!
+     Applies a shader to a texture
+     @param shaderName
+     @param texture
+     @param rect
      */
     void apply(std::string shaderName, ofTexture texture, ofRectangle rect) {
         ofShader *shader = shaders[shaderName];
@@ -120,6 +136,7 @@ public:
         
         shader->begin();
         ofParameterGroup parameterGroup = parameterGroups[shaderName];
+        
         for(auto parameter:parameterGroup) {
             std::string name = parameter->getName();
             std::string type = parameter->valueType();
