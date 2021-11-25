@@ -40,6 +40,7 @@ public:
         tempFbo.allocate(width, height);
         
         tempFbo.begin();
+        ofSetColor(255,255,255);
         tmpTexture.draw(0,0,width, height);
         tempFbo.end();
         

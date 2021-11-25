@@ -37,6 +37,8 @@ class ofApp : public ofBaseApp{
     
     void generateScreenshots();
     
+    void applyToActiveInputs(std::function<void(InputProtocol *)> lambda);
+    
     ofxKinect kinect;
     int angle;
     

@@ -21,16 +21,8 @@ public:
     
     void setup(ofJson visuals) {
         for(auto& [index, input]  : visuals.items()) {
-            /*
-            if  (input["type"] == "video") {
-                Video *video = new Video(input);
-                inputs.push_back((InputProtocol *) video);
-                continue;
-            }
-            */
-            //throw new std::runtime_error("Invalid input type");
-            
             openVideo(input);
+            openCamera(input);
         }
     }
     
@@ -41,8 +33,12 @@ public:
         inputs.push_back((InputProtocol *) video);
     }
     
+    void openCamera(ofJson input) {
+        if (input["type"] != "camera") return;
+    }
+    
     /*!
-     Applies the lambda to each shader in the batch
+     Applies the lambda to each input
      */
     void each(std::function<void(InputProtocol*)> lambda) {
         for (InputProtocol* input:inputs) {

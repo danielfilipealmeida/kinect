@@ -43,6 +43,18 @@ void ofApp::setup(){
     
 }
 
+/*!
+ Applies a lambda to the active  input on each layer
+ @param lambda
+ */
+void ofApp::applyToActiveInputs(std::function<void(InputProtocol *)> lambda) {
+    appData.layers.each([&](Layer *layer) {
+        unsigned int activeVisualNumber = layer->activeVisual;
+        InputProtocol* activeVisual = (InputProtocol *) appData.inputs.inputs[activeVisualNumber];
+        lambda(activeVisual);
+    });
+};
+
 //--------------------------------------------------------------
 void ofApp::update(){
     if (!appData.inputs.screenshotsGenerated && frameNumber>0) {
@@ -54,13 +66,26 @@ void ofApp::update(){
         // only inits the UI when the screenshots are generated
         initUI();
 
-        appData.activeInput->play();
+        // start the videos
+        applyToActiveInputs([](InputProtocol *input){
+            input->play();
+        });
+        
         
     }
     
     
     ofBackground(0, 0, 0);
-    appData.activeInput->update();
+    
+    
+    applyToActiveInputs([](InputProtocol *input){
+        input->update();
+    });
+    
+    
+    
+    
+    //appData.activeInput->update();
     appData.shaderBatch.update();
     
     
@@ -88,10 +113,21 @@ void ofApp::draw(){
             
             ofSetColor(255, 255, 255);
             
-            //ofTexture tex = texFromPixels(testImage.getPixels());
-            ofTexture tex = appData.activeInput->getTexture();
-            appData.shaderBatch.apply(tex);
-            appData.shaderBatch.draw(0, 0, ofGetWidth(), ofGetHeight());
+            appData.layers.each([&](Layer *layer) {
+                unsigned int activeVisualNumber = layer->activeVisual;
+                InputProtocol* activeVisual = appData.inputs.inputs[activeVisualNumber];
+                
+                ofTexture tex = activeVisual->getTexture();
+                appData.shaderBatch.apply(tex);
+                
+                ofEnableBlendMode(layer->blendMode);
+                ofSetColor(255,255,255, layer->alpha * 255);
+                appData.shaderBatch.draw(0, 0, ofGetWidth(), ofGetHeight());
+                ofDisableBlendMode();
+                
+            });
+            
+            
         }
         catch(std::runtime_error error) {
             cout << error.what() << endl;

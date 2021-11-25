@@ -1,6 +1,5 @@
 {
     "filters": [
-        "edgedetection",
         "limiter",
         "invertcolor"
     ],
@@ -16,15 +15,33 @@
         {
             "type": "video",
             "path": "Mechanical_001.mov"
+        },
+        {
+            "type": "camera",
+            "id": 0
         }
     ],
-    "channels": [
+    "layers": [
         {
-            "visual": 0,
+            "alpha": 1,
+            "visual": 2,
+            "mode": "none",
             "filterBatch": [
                 "limiter",
                 "invertcolor"
             ]
+        },
+        {
+            "alpha": 0.5,
+            "visual": 0,
+            "mode": "alpha",
+            "filterBatch": []
+        },
+        {
+            "alpha": 0.5,
+            "visual": 1,
+            "mode": "multiply",
+            "filterBatch": []
         }
     ]
 }

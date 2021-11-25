@@ -13,12 +13,14 @@
 #include "SetLoader.hpp"
 #include "Video.hpp"
 #include "Inputs.h"
+#include "Layers.h"
 
 class AppData {
 public:
     AppShaders shaders;
     ShaderBatch shaderBatch;
     Inputs inputs;
+    Layers layers;
 
     
     // todo, move this to a layer
@@ -37,6 +39,10 @@ public:
         setLoader.filtersLambda = [&](ofJson data){
             shaderBatch.setup(shaders, data, ofRectangle(0, 0, ofGetWidth(), ofGetHeight()));
         };
+        setLoader.layersLambda = [&](ofJson data) {
+            layers.setup(data);
+        };
+        
         setLoader.loadFile(setPath);
         
         
